@@ -22,6 +22,11 @@ class HamburgerView: UIView {
         configure()
     }
     
+    func rotate(fraction: CGFloat) {
+        let angle = Double(fraction) * Double.pi
+        imageView.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
+    }
+    
     // MARK: Private
     
     private func configure() {

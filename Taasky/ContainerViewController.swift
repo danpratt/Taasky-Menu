@@ -29,6 +29,7 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         hideOrShowMenu(show: showingMenu, animated: false)
+        menuContainerView.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
     }
 
     // MARK: - Container View Controller
@@ -41,12 +42,36 @@ class ContainerViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - UIScrollView Delegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.isPagingEnabled = scrollView.contentOffset.x < (scrollView.contentSize.width - scrollView.frame.width)
+        let multiplier = 1.0 / menuContainerView.bounds.width
+        let offset = scrollView.contentOffset.x * multiplier
+        let fraction = 1.0 - offset
+        menuContainerView.layer.transform = transformForFraction(fraction: fraction)
+        menuContainerView.alpha = fraction
+        
+        // animate hamburger
+        if let detailViewController = detailViewController {
+            if let rotatingView = detailViewController.hamburgerView {
+                rotatingView.rotate(fraction: fraction)
+            }
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let menuOffset = menuContainerView.bounds.width
         showingMenu = !__CGPointEqualToPoint(CGPoint(x: menuOffset, y: 0), scrollView.contentOffset)
         print("didEndDecelerating showingMenu: \(showingMenu)")
+    }
+    
+    // MARK: - Animation
+    
+    func transformForFraction(fraction:CGFloat) -> CATransform3D {
+        var identity = CATransform3DIdentity
+        identity.m34 = -1.0 / 1000.0;
+        let angle = Double(1.0 - fraction) * -Double.pi
+        let xOffset = menuContainerView.bounds.width * 0.5
+        let rotateTransform = CATransform3DRotate(identity, CGFloat(angle), 0.0, 1.0, 0.0)
+        let translateTransform = CATransform3DMakeTranslation(xOffset, 0.0, 0.0)
+        return CATransform3DConcat(rotateTransform, translateTransform)
     }
 
      // MARK: - Navigation
