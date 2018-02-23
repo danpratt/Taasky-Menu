@@ -118,6 +118,10 @@
                             <constraint firstItem="tS5-Uq-IGq" firstAttribute="height" secondItem="bEE-Jj-YIs" secondAttribute="height" id="mDX-Np-S7p"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="menuContainerView" destination="PGu-26-ciy" id="dY3-vE-U4n"/>
+                        <outlet property="scrollView" destination="iTe-Dn-JpF" id="q22-PB-sI0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yf1-t9-7n1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
