@@ -10,29 +10,28 @@ import UIKit
 
 class MenuViewController: UITableViewController {
   
-  lazy var menuItems: NSArray = {
-    let path = Bundle.main.path(forResource: "MenuItems", ofType: "plist")
-    return NSArray(contentsOfFile: path!)!
+    lazy var menuItems: NSArray = {
+        let path = Bundle.main.path(forResource: "MenuItems", ofType: "plist")
+        return NSArray(contentsOfFile: path!)!
     }()
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Remove the drop shadow from the navigation bar
-    navigationController!.navigationBar.clipsToBounds = true
-  }
-  
-  // MARK: - Segues
-  
-  func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "showDetail" {
-      if let indexPath = self.tableView.indexPathForSelectedRow {
-        let object = menuItems[indexPath.row] as! NSDictionary
-        (segue.destination as! DetailViewController).menuItem = object
-      }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Remove the drop shadow from the navigation bar
+        navigationController!.navigationBar.clipsToBounds = true
+        (navigationController!.parent as! ContainerViewController).menuItem =
+            (menuItems[0] as! NSDictionary)
     }
-  }
   
-  // MARK: - Table View
+    // MARK: - UITableView delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let menuItem = menuItems[indexPath.row] as! NSDictionary
+        (navigationController!.parent as! ContainerViewController).menuItem = menuItem
+    }
+    
+  
+    // MARK: - Table View
   
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

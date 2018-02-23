@@ -50,7 +50,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAd-ib-4aj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="881" y="-110"/>
+            <point key="canvasLocation" x="239" y="-110"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="NYc-YF-yWU">
@@ -82,7 +82,7 @@
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbb-MF-A81" userLabel="Detail Container View">
                                                 <rect key="frame" x="80" y="0.0" width="414" height="736"/>
                                                 <connections>
-                                                    <segue destination="Vqm-Wl-L4s" kind="embed" id="Daz-s1-3Y5"/>
+                                                    <segue destination="Vqm-Wl-L4s" kind="embed" identifier="DetailViewSegue" id="Daz-s1-3Y5"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yf1-t9-7n1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879.71014492753625" y="631.79347826086962"/>
+            <point key="canvasLocation" x="-751" y="470"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="MDD-x1-f8q">
@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhb-p9-sA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2561" y="-110"/>
+            <point key="canvasLocation" x="797" y="858"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FXw-ZZ-7Mv">
@@ -194,7 +194,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIL-0y-b06" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692.753623188406" y="-110.05434782608697"/>
+            <point key="canvasLocation" x="88" y="859"/>
         </scene>
     </scenes>
 </document>

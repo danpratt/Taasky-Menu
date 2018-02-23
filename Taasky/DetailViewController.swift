@@ -10,20 +10,20 @@ import UIKit
 
 class DetailViewController: UIViewController {
   
-  @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController!.navigationBar.clipsToBounds = true
     }
   
-  var menuItem: NSDictionary? {
-    didSet {
-      if let newMenuItem = menuItem {
-        view.backgroundColor = UIColor(colorArray: newMenuItem["colors"] as! NSArray)
-        backgroundImageView?.image = UIImage(named: newMenuItem["bigImage"] as! String)
-      }
+    var menuItem: NSDictionary? {
+        didSet {
+            if let newMenuItem = menuItem {
+                view.backgroundColor = UIColor(colorArray: newMenuItem["colors"] as! NSArray)
+                backgroundImageView?.image = UIImage(named: newMenuItem["bigImage"] as! String)
+            }
+        }
     }
-  }
   
 }
