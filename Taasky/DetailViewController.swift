@@ -11,6 +11,11 @@ import UIKit
 class DetailViewController: UIViewController {
   
   @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController!.navigationBar.clipsToBounds = true
+    }
   
   var menuItem: NSDictionary? {
     didSet {
